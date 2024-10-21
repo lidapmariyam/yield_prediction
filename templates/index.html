@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Yield Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="crop">Crop</label>
+            <input type="text" id="crop" name="Crop" placeholder="Enter crop type" required>
+
+            <label for="area">Area (in hectares)</label>
+            <input type="number" id="area" name="Area" placeholder="Enter area" required>
+
+            <label for="production">Production (in tons)</label>
+            <input type="number" id="production" name="Production" placeholder="Enter production" required>
+
+            <label for="rainfall">Annual Rainfall (in mm)</label>
+            <input type="number" id="rainfall" name="Annual_Rainfall" placeholder="Enter annual rainfall" required>
+
+            <label for="fertilizer">Fertilizer (in kg)</label>
+            <input type="number" id="fertilizer" name="Fertilizer" placeholder="Enter fertilizer used" required>
+
+            <label for="pesticide">Pesticide (in kg)</label>
+            <input type="number" id="pesticide" name="Pesticide" placeholder="Enter pesticide used" required>
+
+            <button type="submit">Predict Yield</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction Result:</h2>
+            <p>Predicted Crop Yield: {{ prediction }} tons</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
